@@ -1,0 +1,30 @@
+.text-format {
+    text-align: justify;
+}
+
+.layout-custom {
+    float: left;
+    width: calc(100% / 3);
+}
+
+.packages-img {
+    width: 420px;
+    height: 225px;
+    vertical-align: middle;
+    object-fit: cover;
+    
+}
+
+.packages-title {
+    height: 50px;
+}
+
+.packages-content {
+    height: 690px;
+}
+
+.packages-btn {
+    position: absolute;
+    bottom: 0;
+    width: 420px;
+}
