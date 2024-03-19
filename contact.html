@@ -87,18 +87,19 @@
          <h1 class="contact_taital">Để Lại Thông Tin Tư Vấn</h1>
          <div class="email_text">
             <div class="form-group">
-               <input type="text" class="email-bt" placeholder="Họ và Tên" name="Email">
+               <input type="text" class="email-bt" placeholder="Họ và Tên" name="FullName" id="fullName">
             </div>
             <div class="form-group">
-               <input type="text" class="email-bt" placeholder="SĐT" name="Email">
+               <input type="text" class="email-bt" placeholder="SĐT" name="PhoneNumber" id="sdt">
             </div>
             <div class="form-group">
-               <input type="text" class="email-bt" placeholder="Email" name="Email">
+               <input type="text" class="email-bt" placeholder="Email" name="Email" id="email">
             </div>
             <div class="form-group">
                <textarea class="massage-bt" placeholder="Lời nhắn" rows="5" id="comment" name="Massage"></textarea>
             </div>
-            <div class="send_btn"><a href="#">Gửi</a></div>
+            
+            <button class="send_btn" onclick="return submitForm()"><a href="">Gửi</a></button>
          </div>
       </div>
    </div>
@@ -139,6 +140,36 @@
    <!-- javascript -->
    <script src="js/owl.carousel.js"></script>
    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+   <script type="text/javascript">
+      function submitForm() {
+         const fullName = document.getElementById("fullName");
+         const phoneNumber = document.getElementById("sdt").value;
+         const email = document.getElementById("email").value;
+         const message = document.getElementById("comment").value;
+         const msgObj = document.getElementById("msg-id");
+
+         let data = {
+            'entry.1941422669': fullName.value,
+            'entry.1199344946': phoneNumber,
+            'entry.296788949': email,
+            'entry.1423757991': message,
+            'entry.1233658231': "Chưa Liên Hệ KH"
+         }
+
+         let queryString = new URLSearchParams(data);
+         queryString = queryString.toString();
+
+         let xhr = new XMLHttpRequest();
+         xhr.open("POST", "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeKPeUPRxixJtgw3uvmZ1FYvRoffbKpgZIPtFQ3XI71X901CQ/formResponse", true);
+
+         // Send the proper header information along with the request
+         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+         xhr.send(queryString);
+         alert("Gửi Thông Tin Thành Công")
+      }
+   </script>
 </body>
 
 </html>
